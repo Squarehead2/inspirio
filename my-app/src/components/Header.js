@@ -4,9 +4,14 @@ import QuotesLonely from "../pages/QuotesLonely";
 
 function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -21,7 +26,11 @@ function Header() {
               Inspirio<span className="text-indigo-500">.</span>
             </h1>
           </Link>
-          <ul className="hidden md:flex space-x-8 list-none">
+          <ul
+            className={`md:flex space-x-8 list-none ${
+              isMobileMenuOpen ? "block" : "hidden md:block"
+            }`}
+          >
             <li>
               <Link
                 to="/"
@@ -37,7 +46,7 @@ function Header() {
               >
                 Quotes
               </button>
-              {isDropdownOpen && (
+              {(isDropdownOpen || isMobileMenuOpen) && (
                 <ul className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md">
                   <li>
                     <Link
@@ -91,7 +100,10 @@ function Header() {
               </a>
             </li>
           </ul>
-          <button className="md:hidden text-white text-2xl">
+          <button
+            onClick={toggleMobileMenu}
+            className="md:hidden text-white text-2xl"
+          >
             <i className="fas fa-bars"></i>
           </button>
         </div>

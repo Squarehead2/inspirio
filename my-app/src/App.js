@@ -51,6 +51,12 @@ function App() {
 }
 
 function HomePage({ quotes }) {
+  const [isExploreDropdownOpen, setIsExploreDropdownOpen] = useState(false);
+
+  const toggleExploreDropdown = () => {
+    setIsExploreDropdownOpen(!isExploreDropdownOpen);
+  };
+
   return (
     <div className="min-h-screen flex flex-col w-full bg-white text-gray-800 font-['Inter',system-ui,sans-serif] leading-relaxed animate-fadeInPage">
       <Header />
@@ -69,26 +75,72 @@ function HomePage({ quotes }) {
               Curated inspiration for the modern mind, designed to elevate your
               perspective
             </p>
-            <Link
-              to="/quotes"
-              className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white border-none py-3.5 px-10 text-base font-semibold rounded-full transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-500/30 tracking-wide inline-flex items-center group"
-            >
-              Explore Collection
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+            <div className="relative">
+              <button
+                onClick={toggleExploreDropdown}
+                className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white border-none py-3.5 px-10 text-base font-semibold rounded-full transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-500/30 tracking-wide inline-flex items-center group"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
-              </svg>
-            </Link>
+                Explore Collection
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </button>
+              {isExploreDropdownOpen && (
+                <ul className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md">
+                  <li>
+                    <Link
+                      to="/quotes"
+                      className="block px-4 py-2 text-black hover:bg-indigo-500 hover:text-white"
+                    >
+                      Quotes
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/quotes/lonely"
+                      className="block px-4 py-2 text-black hover:bg-indigo-500 hover:text-white"
+                    >
+                      For when you're lonely
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/quotes/inspiration"
+                      className="block px-4 py-2 text-black hover:bg-indigo-500 hover:text-white"
+                    >
+                      For when you need inspiration
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/quotes/feeling-down"
+                      className="block px-4 py-2 text-black hover:bg-indigo-500 hover:text-white"
+                    >
+                      For when you're feeling down
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/quotes/insight"
+                      className="block px-4 py-2 text-black hover:bg-indigo-500 hover:text-white"
+                    >
+                      For when you need some insight
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </div>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent"></div>
