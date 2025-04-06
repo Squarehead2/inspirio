@@ -13,6 +13,7 @@ import {
   GiMeditation,
   GiAsianLantern,
   GiAllSeeingEye,
+  GiBookAura,
   GiBrain,
   GiAtom,
   GiComputing,
@@ -335,6 +336,23 @@ export const categories = [
           { id: "islam", name: "Islam" },
         ],
       },
+      {
+        id: "religion",
+        name: "Religion",
+        icon: GiBookAura, // Assign icon for subcategory
+        subSubcategories: [
+          { id: "buddhism", name: "Buddhism" },
+          { id: "hinduism", name: "Hinduism" },
+          { id: "taoism", name: "Taoism" },
+          { id: "zen", name: "Zen" },
+          { id: "christianity", name: "Christianity" },
+          { id: "judaism", name: "Judaism" },
+          { id: "islam", name: "Islam" },
+          { id: "mysticism", name: "Mysticism" },
+          { id: "shamanism", name: "Shamanism" },
+        ],
+      },
+
       {
         id: "meditation",
         name: "Meditation",

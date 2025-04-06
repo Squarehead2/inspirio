@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Quotes from "./pages/Quotes";
+import QuotesLonely from "./pages/QuotesLonely";
 import Header from "./components/Header";
-
+import QuotesInspiration from "./pages/QuotesInspiration";
+import QuotesFeelingDown from "./pages/QuotesFeelingDown";
+import QuotesInisghtful from "./pages/QuotesInisghtful";
 function App() {
   const [quotes, setQuotes] = useState([
     {
@@ -38,6 +41,10 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage quotes={quotes} />} />
         <Route path="/quotes" element={<Quotes />} />
+        <Route path="/quotes/lonely" element={<QuotesLonely />} />
+        <Route path="/quotes/inspiration" element={<QuotesInspiration />} />
+        <Route path="/quotes/feeling-down" element={<QuotesFeelingDown />} />
+        <Route path="/quotes/insight" element={<QuotesInisghtful />} />
       </Routes>
     </Router>
   );
@@ -45,7 +52,7 @@ function App() {
 
 function HomePage({ quotes }) {
   return (
-    <div className="min-h-screen flex flex-col w-full bg-white text-gray-800 font-['Inter',system-ui,sans-serif] leading-relaxed">
+    <div className="min-h-screen flex flex-col w-full bg-white text-gray-800 font-['Inter',system-ui,sans-serif] leading-relaxed animate-fadeInPage">
       <Header />
 
       <section className="w-full flex items-center justify-center pt-32 pb-20 flex-grow min-h-screen bg-black/80 bg-[url('https://images.unsplash.com/photo-1519681393784-d120267933ba')] bg-cover bg-fixed bg-center text-white text-center">

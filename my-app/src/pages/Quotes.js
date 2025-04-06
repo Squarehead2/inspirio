@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { quotes, categories } from "../data/quotesData";
-
+import "../pages/css/Quotes.css";
 function Quotes() {
   // State to track the current quote, selected main category and subcategories
   const [currentQuote, setCurrentQuote] = useState(quotes[0]);
   const [selectedMainCategory, setSelectedMainCategory] = useState("all");
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [filteredQuotes, setFilteredQuotes] = useState(quotes);
+  const [animationClass, setAnimationClass] = useState("");
 
   // Function to select main category
   const selectMainCategory = (categoryId) => {
@@ -81,13 +82,21 @@ function Quotes() {
   // Function to get a random quote from filtered quotes
   const getRandomQuote = () => {
     if (filteredQuotes.length > 0) {
-      const randomIndex = Math.floor(Math.random() * filteredQuotes.length);
-      setCurrentQuote(filteredQuotes[randomIndex]);
+      // Trigger slide-out animation
+      setAnimationClass("slide-out");
+
+      setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * filteredQuotes.length);
+        setCurrentQuote(filteredQuotes[randomIndex]);
+
+        // Trigger slide-in animation
+        setAnimationClass("slide-in");
+      }, 300); // Duration of slide-out animation
     }
   };
 
   return (
-    <div className="min-h-screen flex flex-col w-full bg-white text-gray-800 font-['Inter',system-ui,sans-serif] leading-relaxed">
+    <div className="min-h-screen flex flex-col w-full bg-white text-gray-800 font-['Inter',system-ui,sans-serif] leading-relaxed animate-fadeIn">
       <Header />
 
       <section className="w-full pt-32 pb-20 flex-grow min-h-screen bg-black/80 bg-[url('https://images.unsplash.com/photo-1519681393784-d120267933ba')] bg-cover bg-fixed bg-center text-white">
@@ -214,7 +223,7 @@ function Quotes() {
 
           <div className="flex justify-center items-center">
             <div
-              className="bg-gray-900/80 backdrop-blur-sm rounded-xl p-10 shadow-xl transition-all hover:-translate-y-4 hover:shadow-2xl border border-white/10 flex flex-col justify-between max-w-2xl w-full cursor-pointer animate-fadeIn"
+              className={`bg-gray-900/80 backdrop-blur-sm rounded-xl p-10 shadow-xl transition-all hover:-translate-y-4 hover:shadow-2xl border border-white/10 flex flex-col justify-between max-w-2xl w-full cursor-pointer animate-fadeIn ${animationClass}`}
               onClick={getRandomQuote}
             >
               {filteredQuotes.length > 0 ? (
