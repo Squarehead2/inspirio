@@ -97,7 +97,7 @@ function HomePage({ quotes }) {
                 </svg>
               </button>
               {isExploreDropdownOpen && (
-                <ul className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md">
+                <ul className="absolute left-0 mt-2 w-48 z-20 bg-white shadow-lg rounded-md">
                   <li>
                     <Link
                       to="/quotes"

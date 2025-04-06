@@ -15,7 +15,7 @@ function Header() {
   };
 
   return (
-    <header className="w-full fixed top-[-40px] left-0 z-10">
+    <header className="w-full fixed top-[-40px] left-0 z-30">
       <nav className="flex justify-between items-center p-5 mt-10 w-full bg-black/60 backdrop-blur-md border-b border-white/10">
         <div className="logo max-w-7xl w-full mx-auto flex justify-between items-center">
           <Link
